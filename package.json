@@ -8,6 +8,7 @@
   },
   "scripts": {
     "start": "NODE_ENV=production node server.js",
+    "postinstall": "next build",
     "dev": "node server.js"
   }
 }
