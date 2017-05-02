@@ -21,6 +21,7 @@ app.prepare().then(() => {
 
     if (pathname === '/download') {
       if (query.code === code) {
+        console.log("Serving", join(__dirname, 'contents', filename))
         res.setHeader('Content-disposition', `attachment; filename=${filename}`)
         app.serveStatic(req, res, join(__dirname, 'contents', filename))
       } else {
@@ -31,6 +32,6 @@ app.prepare().then(() => {
     }
   }).listen(port, err => {
     if (err) throw err
-    console.log('> Ready on http://localhost:3000')
+    console.log(`> Ready on http://localhost:${port}`)
   })
 })
