@@ -1,5 +1,6 @@
 import React from 'react'
 import Router from 'next/router'
+import fetch from 'isomorphic-fetch'
 
 export default class extends React.Component {
   state = {
@@ -10,12 +11,15 @@ export default class extends React.Component {
     this.setState({ value: event.target.value })
   }
 
-  handleSubmit = event => {
+  handleSubmit = async event => {
     event.preventDefault()
-    Router.push({
-      pathname: '/download',
-      query: { code: this.state.value }
-    })
+    const res = await fetch(`/download?code=${this.state.value}`)
+    if (res.ok) {
+      const body = await res.text()
+      console.log(new Buffer(body))
+      return
+    }
+    console.log(res)
   }
 
   render() {

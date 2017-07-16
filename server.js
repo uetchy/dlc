@@ -1,3 +1,4 @@
+const express = require('express')
 const { createServer } = require('http')
 const { parse } = require('url')
 const next = require('next')
@@ -15,22 +16,23 @@ assert(code, 'DLC_CODE can not be blank')
 assert(filename, 'DLC_FILENAME can not be blank')
 
 app.prepare().then(() => {
-  createServer((req, res) => {
-    const parsedUrl = parse(req.url, true)
-    const { pathname, query } = parsedUrl
+  const server = express()
 
-    if (pathname === '/download') {
-      if (query.code === code) {
-        console.log("Serving", join(__dirname, 'contents', filename))
-        res.setHeader('Content-disposition', `attachment; filename=${filename}`)
-        app.serveStatic(req, res, join(__dirname, 'contents', filename))
-      } else {
-        app.render(req, res, '/', query)
-      }
+  server.get('/download', (req, res) => {
+    if (req.query.code === code) {
+      console.log('Serving', join(__dirname, 'contents', filename))
+      res.setHeader('Content-disposition', `attachment; filename=${filename}`)
+      return res.sendFile(join(__dirname, 'contents', filename))
     } else {
-      handle(req, res, parsedUrl)
+      return res.status(403).send({ error: 'invalid code' })
     }
-  }).listen(port, err => {
+  })
+
+  server.get('*', (req, res) => {
+    return handle(req, res)
+  })
+
+  server.listen(port, err => {
     if (err) throw err
     console.log(`> Ready on http://localhost:${port}`)
   })
