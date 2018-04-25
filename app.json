@@ -1,8 +1,7 @@
 {
   "name": "dlc",
   "description": "Next.js based downloadable contents provider.",
-  "scripts": {
-  },
+  "scripts": {},
   "env": {
     "DLC_CODE": "Download code",
     "DLC_FILENAME": "Downloadable content filename"
@@ -12,8 +11,7 @@
       "quantity": 1
     }
   },
-  "addons": [
-  ],
+  "addons": [],
   "buildpacks": [
     {
       "url": "heroku/nodejs"

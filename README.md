@@ -4,15 +4,15 @@ Next.js based downloadable contents (DLC) distribution service.
 
 ## Usage
 
-1. Put your goodies on `/contents` directory.
-2. Create an app with `heroku create` and setup code and files via `heroku config`.
+1.  Put your goodies on `/contents` directory.
+2.  Create an app with `heroku create` and setup code and files via `heroku config`.
 
 ```
 heroku create
 heroku config:set DLC_CODE=SecretDownloadCode DLC_FILENAME=goodies.zip
 ```
 
-3. Deploy your app with `git push`.
+3.  Deploy your app with `git push`.
 
 ```
 git add .

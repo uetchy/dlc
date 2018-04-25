@@ -4,7 +4,7 @@ import fetch from 'isomorphic-fetch'
 
 export default class extends React.Component {
   state = {
-    value: ''
+    value: '',
   }
 
   handleChange = event => {

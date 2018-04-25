@@ -22,14 +22,14 @@ app.prepare().then(() => {
     if (req.query.code === code) {
       console.log('Serving', join(__dirname, 'contents', filename))
       res.setHeader('Content-disposition', `attachment; filename=${filename}`)
-      return res.sendFile(join(__dirname, 'contents', filename))
+      res.sendFile(join(__dirname, 'contents', filename))
     } else {
-      return res.status(403).send({ error: 'invalid code' })
+      res.status(403).send({ error: 'invalid code' })
     }
   })
 
   server.get('*', (req, res) => {
-    return handle(req, res)
+    handle(req, res)
   })
 
   server.listen(port, err => {
