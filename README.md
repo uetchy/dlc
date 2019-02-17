@@ -1,5 +1,7 @@
 # dlc
 
+Frre, open-source, self-hosted content distribution service.
+
 Next.js based downloadable contents (DLC) distribution service.
 
 ## Usage

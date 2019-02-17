@@ -1,17 +1,17 @@
 import React from 'react'
 import Router from 'next/router'
-import fetch from 'isomorphic-fetch'
+import fetch from 'isomorphic-unfetch'
 
 export default class extends React.Component {
   state = {
     value: '',
   }
 
-  handleChange = event => {
+  handleChange = (event) => {
     this.setState({ value: event.target.value })
   }
 
-  handleSubmit = async event => {
+  handleSubmit = async (event) => {
     event.preventDefault()
     const res = await fetch(`/download?code=${this.state.value}`)
     if (res.ok) {
