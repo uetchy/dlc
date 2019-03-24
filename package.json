@@ -12,9 +12,9 @@
   "dependencies": {
     "express": "^4.16.3",
     "isomorphic-unfetch": "^3.0.0",
-    "next": "^8.0.1",
-    "react": "^16.3.2",
-    "react-dom": "^16.3.2"
+    "next": "^8.0.3",
+    "react": "^16.8.5",
+    "react-dom": "^16.8.5"
   },
   "bugs": {
     "url": "https://github.com/uetchy/dlc/issues"
